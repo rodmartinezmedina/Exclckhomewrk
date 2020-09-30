@@ -8,7 +8,10 @@ const RepoItem = ({ repo }) => {
           {repo.name}
         </a>
       </h3>
+      <h4>{repo.collaborators_url}</h4>
+
       <p>{repo.description}</p>
+
       {repo.language && (
         <p>
           <strong>Language: </strong>

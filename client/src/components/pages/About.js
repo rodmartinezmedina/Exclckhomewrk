@@ -4,16 +4,30 @@ const About = ({ iconGithub, iconLinkedin, iconWebsite }) => {
   return (
     <div id="about-container">
       <h1> About this app </h1>
-      <p> ExoClick Homework </p>
+      <p>
+        {" "}
+        <strong> ExoClick, Adworld Homework / Challenge </strong>{" "}
+      </p>
       <h3>Instructions of use</h3>
       <p>Search for any Github user in the Home Page.</p>
-      <br />
       <p>
         Click on 'more info' button to get more detailed user's info, including
         repositoriess
       </p>
+      <h3>About user's repos info display</h3>
+      <p>
+        When choosing to display more info about the user, user's repos will be
+        displayed
+      </p>
+      <p>
+        If user's repo has info about its description, contributors and
+        languages spectifications, then the info will be displayed. If user's
+        repo has no info for the mentioned items, no info will be displayed.
+      </p>
 
-      <p>API used: </p>
+      <br />
+
+      <h4>API used: </h4>
       <a
         href="https://developer.github.com/v3/"
         target="_blank"
@@ -31,8 +45,8 @@ const About = ({ iconGithub, iconLinkedin, iconWebsite }) => {
         and an enthusiast of new techs in web development
       </p>
       <p>
-        I was a Music Composer, Arranger, Session Musician and Graphic Designer
-        before becoming a full time Web Developer.
+        I was a Graphic Designer and a Music Composer, Arranger, Session
+        Musician before becoming a full time Developer.
       </p>
 
       <a

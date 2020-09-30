@@ -4,6 +4,7 @@ import {
   CLEAR_USERS,
   GET_USER,
   GET_REPOS,
+  GET_CONTRIBUTORS,
   FILTER_REPOS,
   CLEAR_FILTER_REPOS,
 } from "../types";
@@ -39,6 +40,13 @@ export default (state, action) => {
         repos: action.payload,
         loading: false,
       };
+    case GET_CONTRIBUTORS:
+      return {
+        ...state,
+        contributors: action.payload,
+        loading: false,
+      };
+
     case FILTER_REPOS:
       return {
         ...state,

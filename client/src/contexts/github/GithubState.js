@@ -8,6 +8,7 @@ import {
   CLEAR_USERS,
   GET_USER,
   GET_REPOS,
+  GET_CONTRIBUTORS,
   FILTER_REPOS,
   CLEAR_FILTER_REPOS,
 } from "../types";
@@ -71,6 +72,7 @@ const GithubState = (props) => {
     const res = await axios.get(
       `https://api.github.com/users/${username}?client_id=${githubClientId}&client_secret=${githubClientSecret}`
     );
+    console.log(`getUser`, res.data);
 
     dispatch({ type: GET_USER, payload: res.data });
   };
@@ -85,8 +87,27 @@ const GithubState = (props) => {
     ${githubClientSecret}`
     );
 
+    console.log(`getUserRepos`, res.data);
+
     dispatch({
       type: GET_REPOS,
+      payload: res.data,
+    });
+  };
+
+  // Get Repo Contributors
+  const getRepoContributors = async (username, repo) => {
+    setLoading();
+
+    const res = await axios.get(
+      `https://api.github.com/repos/${username}/${repo}/contributors?client_id=
+        ${githubClientId}&client_secret=
+        ${githubClientSecret}`
+    );
+
+    console.log(`getRepoContributors`, res);
+    dispatch({
+      type: GET_CONTRIBUTORS,
       payload: res.data,
     });
   };

@@ -2,6 +2,7 @@ export const SEARCH_USERS = "SEARCH_USERS";
 export const GET_USER = "GET_USER";
 export const CLEAR_USERS = "CLEAR_USERS";
 export const GET_REPOS = "GET_REPOS";
+export const GET_CONTRIBUTORS = "GET_CONTRIBUTORS";
 export const SET_LOADING = "SET_LOADING";
 export const FILTER_REPOS = "FILTER_REPOS";
 export const CLEAR_FILTER_REPOS = "CLEAR_FILTER_REPOS";

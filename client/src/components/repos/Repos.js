@@ -20,12 +20,12 @@ const Repos = () => {
           <div>
             {filteredRepos !== null
               ? filteredRepos.map((repo) => (
-                  <div key={repo.id} classNames="item">
+                  <div key={repo.id} className="item">
                     <RepoItem repo={repo} />
                   </div>
                 ))
               : repos.map((repo) => (
-                  <div key={repo.id} classNames="item">
+                  <div key={repo.id} className="item">
                     <RepoItem repo={repo} />
                   </div>
                 ))}
