@@ -1,0 +1,86 @@
+import React from "react";
+import ReactDOM from "react-dom";
+import { render, fireEvent, getByText } from "@testing-library/react";
+import { toBeInTheDocument } from "@testing-library/jest-dom";
+import GithubContext from "../../contexts/github/githubContext";
+import GithubState from "../../contexts/github/GithubState";
+import Search from "./Search";
+import users from "../../contexts/github/GithubState";
+// const githubContext = useContext(GithubContext);
+
+it("renders without crashing", () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<Search></Search>, div);
+});
+
+expect.extend({ toBeInTheDocument });
+
+test("Test to check users from global context", () => {
+  const GithubState = {
+    users: { users },
+  };
+  const { container } = render(
+    <GithubState value={GithubState}>
+      <Search.users />
+    </GithubState>
+  );
+  const users = getByText(container, "Aatif");
+  expect(users).toBeInTheDocument();
+});
+
+//
+//
+//
+// A tree containing both a providers and consumer can be rendered normally
+
+// test("renders correctly", () => {
+//   const { queryByTestId, queryByPlaceholderText } = render(
+//     <GithubContext.Provider users={users}>
+//       <Search />
+//     </GithubContext.Provider>
+//   );
+//   const { getByText } = render(tree);
+//   expect(queryByTestId("search-button")).toBeTruthy();
+//   expect(queryByPlaceholderText("Search for Github User....")).toBeTruthy();
+// });
+
+// //
+// //
+// //
+// //
+// it("renders correctly", () => {
+//   const { queryByTestId, queryByPlaceholderText } = render(<Search></Search>);
+
+//   expect(queryByTestId("search-button")).toBeTruthy();
+//   expect(queryByPlaceholderText("Search for Github User....")).toBeTruthy();
+// });
+
+// it("renders correctly", () => {
+//   const { queryByTestId, queryByPlaceholderText } = render(<Search></Search>);
+
+//   expect(queryByTestId("search-button")).toBeTruthy();
+//   expect(queryByPlaceholderText("Search for Github User....")).toBeTruthy();
+// });
+
+// describe("input value", () => {
+//   it("updates on change", () => {
+//     const { queryByPlaceholderText } = render(<Search />);
+//     const searchInput = queryByPlaceholderText("Search for Github User....");
+
+//     fireEvent.change(searchInput, { targe: { value: "test" } });
+
+//     expect(searchInput.value).toBe("test");
+//   });
+// });
+
+// describe("Search button", () => {
+//   describe("with empty query", () => {
+//     it("it doesnt trigger onsubmit function", () => {
+//       const onSubmit = jest.fn();
+
+//       const { queryByTestId } = render(<Search onSubmit={onSubmit} />);
+//       fireEvent.click(queryByTestId("search-button"));
+//       expect(onSubmit).not.toHaveBeenCalled();
+//     });
+//   });
+// });

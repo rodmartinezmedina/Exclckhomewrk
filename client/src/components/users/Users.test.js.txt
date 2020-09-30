@@ -1,0 +1,48 @@
+import React, { useContext } from "react";
+import ReactDOM from "react-dom";
+import * as GithubContext from "../../contexts/github/githubContext";
+import App from "../../App";
+import Users from "./Users";
+import UserItem from "./UserItem";
+import GithubState from "../../contexts/github/GithubState";
+
+import ReactTestUtils from "react-dom/test-utils";
+import render from "react-test-render";
+import TestRenderer from "react-test-renderer";
+
+import Enzyme from "enzyme";
+import { mount } from "enzyme";
+import { shallow } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+Enzyme.configure({ adapter: new Adapter() });
+
+it("renders without crashing", () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<Users />, div);
+  ReactDOM.unmountComponentAtNode(div);
+});
+
+describe("<Users />", () => {
+  it("Test to look if something inside <Users />", () => {
+    // const githubContext = useContext(GithubContext);
+    // const { users } = githubContext;
+    const wrapper = mount(
+      <GithubState>
+        <Users />
+      </GithubState>
+    );
+    // wrapper.setState({ users: { users } });
+    expect(wrapper).to.contain(<UserItem />);
+  });
+});
+
+// test("UserGreeter salutes an anonymous user", () => {
+//   const githubContext = useContext(GithubContext);
+//   const { users } = githubContext;
+//   render(
+//     <GithubContext.Provider value={{ users }}>
+//       <Users />
+//     </GithubContext.Provider>
+//   );
+//   expect(screen.getByText("Hello stranger!")).toBeInTheDocument();
+// });
