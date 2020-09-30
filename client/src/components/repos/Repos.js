@@ -7,7 +7,11 @@ import Spinner from "../layout/Spinner";
 const Repos = () => {
   const githubContext = useContext(GithubContext);
 
-  const { repos, filteredRepos, getUserRepos, loading } = githubContext;
+  const { repos, filteredRepos, loading } = githubContext;
+
+  // useEffect(() => {
+  //   getRepoContributors(repo.full_name);
+  // }, []);
 
   if (repos !== null && repos.length === 0 && !loading) {
     return <h4>No repos to show</h4>;

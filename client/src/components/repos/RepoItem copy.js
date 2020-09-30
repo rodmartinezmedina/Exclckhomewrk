@@ -1,22 +1,20 @@
 import React, { useEffect, useContext } from "react";
 import GithubContext from "../../contexts/github/githubContext";
 
-const RepoItem = ({ match, repo }) => {
+const RepoItem = ({ repo }) => {
   const githubContext = useContext(GithubContext);
 
   const {
     getRepoContributors,
-    loading,
-    user,
-    repos,
+    contributors,
     getUserRepos,
+    getUser,
   } = githubContext;
 
   useEffect(() => {
-    getUserRepos(match.params.login);
-    getRepoContributors(repo.owner.login, repo.name);
+    // getUserRepos(match.params.login);
+    getRepoContributors(repo.full_name);
   }, []);
-
   return (
     <div className="card">
       <h3>
@@ -24,21 +22,20 @@ const RepoItem = ({ match, repo }) => {
           {repo.name}
         </a>
       </h3>
+      <h4>{repo.collaborators_url}</h4>
+      {contributors.map((contr) => (
+        <div key={contr.id} className="item">
+          <h3>{contr.login}</h3>
+        </div>
+      ))}
 
-      {repo.contributors_url && (
-        <>
-          <div className="">
-            <h4>Contributors</h4>
-          </div>
-          <p>All contributors: {repo.contributors_url}</p>
-        </>
-      )}
       {repo.description && (
-        <>
-          <h4>Description</h4>
-          <p>{repo.description}</p>
-        </>
+        <p>
+          <strong>Description: </strong>
+          {repo.description}
+        </p>
       )}
+      <p></p>
 
       {repo.language && (
         <p>

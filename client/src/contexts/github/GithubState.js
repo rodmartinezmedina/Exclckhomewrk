@@ -29,6 +29,7 @@ const GithubState = (props) => {
     users: [],
     user: {},
     repos: [],
+    contributors: [],
     loading: false,
     filteredRepos: null,
     error: null,
@@ -72,7 +73,7 @@ const GithubState = (props) => {
     const res = await axios.get(
       `https://api.github.com/users/${username}?client_id=${githubClientId}&client_secret=${githubClientSecret}`
     );
-    console.log(`getUser`, res.data);
+    console.log(`getUser     res.data`, res.data);
 
     dispatch({ type: GET_USER, payload: res.data });
   };
@@ -87,7 +88,7 @@ const GithubState = (props) => {
     ${githubClientSecret}`
     );
 
-    console.log(`getUserRepos`, res.data);
+    console.log(`getUserRepos res.data`, res.data);
 
     dispatch({
       type: GET_REPOS,
@@ -96,16 +97,14 @@ const GithubState = (props) => {
   };
 
   // Get Repo Contributors
-  const getRepoContributors = async (username, repo) => {
+  const getRepoContributors = async (full_name) => {
     setLoading();
 
     const res = await axios.get(
-      `https://api.github.com/repos/${username}/${repo}/contributors?client_id=
-        ${githubClientId}&client_secret=
-        ${githubClientSecret}`
+      `https://api.github.com/repos/${full_name}/contributors?client_id=${githubClientId}&client_secret=${githubClientSecret}`
     );
 
-    console.log(`getRepoContributors`, res);
+    console.log(`getRepoContributors`, res.data);
     dispatch({
       type: GET_CONTRIBUTORS,
       payload: res.data,
@@ -129,12 +128,14 @@ const GithubState = (props) => {
         user: state.user,
         loading: state.loading,
         repos: state.repos,
+        contributors: state.contributors,
         filteredRepos: state.filteredRepos,
         error: state.error,
         searchUsers,
         clearUsers,
         getUser,
         getUserRepos,
+        getRepoContributors,
         filterRepos,
         clearFilterRepos,
       }}
