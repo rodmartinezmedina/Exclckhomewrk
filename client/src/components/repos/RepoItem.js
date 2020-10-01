@@ -6,9 +6,9 @@ const RepoItem = ({ repo }) => {
 
   const { getRepoContributors, contributors } = githubContext;
 
-  useEffect(() => {
-    getRepoContributors(repo.full_name);
-  }, [repo.owner.login]);
+  // useEffect(() => {
+  //   getRepoContributors(repo.full_name);
+  // }, []);
 
   return (
     <div className="card">
@@ -18,11 +18,11 @@ const RepoItem = ({ repo }) => {
         </a>
       </h3>
       <h4>{repo.collaborators_url}</h4>
-      {contributors.map((contr) => (
+      {/* {contributors.map((contr) => (
         <div key={contr.id} className="contributor item">
           <h3>{contr.login}</h3>
         </div>
-      ))}
+      ))} */}
 
       {repo.description && (
         <p>

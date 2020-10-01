@@ -97,11 +97,13 @@ const GithubState = (props) => {
   };
 
   // Get Repo Contributors
-  const getRepoContributors = async (full_name) => {
+  // const getRepoContributors = async (full_name) => {
+  const getRepoContributors = async (repo_contr_url) => {
     setLoading();
 
     const res = await axios.get(
-      `https://api.github.com/repos/${full_name}/contributors?client_id=${githubClientId}&client_secret=${githubClientSecret}`
+      // `https://api.github.com/repos/${full_name}/contributors?client_id=${githubClientId}&client_secret=${githubClientSecret}`
+      `${repo_contr_url}?client_id=${githubClientId}&client_secret=${githubClientSecret}`
     );
 
     console.log(`getRepoContributors`, res.data);
