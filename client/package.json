@@ -7,6 +7,7 @@
     "@types/react-addons-test-utils": "^0.14.25",
     "axios": "^0.19.2",
     "react": "^16.13.1",
+    "react-contributors": "^1.1.2",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",

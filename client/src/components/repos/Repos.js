@@ -6,15 +6,14 @@ import Spinner from "../layout/Spinner";
 
 const Repos = () => {
   const githubContext = useContext(GithubContext);
-
-  const [repoContributors, setRepoContributors] = useState();
+  // const [repoContributors, setRepoContributors] = useState();
 
   const {
     repos,
     filteredRepos,
     loading,
-    contributors,
-    getRepoContributors,
+    // contributors,
+    // getRepoContributors,
   } = githubContext;
 
   if (repos !== null && repos.length === 0 && !loading) {
@@ -29,19 +28,19 @@ const Repos = () => {
             {filteredRepos !== null
               ? filteredRepos.map((repo) => (
                   <div key={repo.id} className="item">
-                    <RepoItemPacha repo={repo} />
+                    <RepoItem repo={repo} />
                   </div>
                 ))
               : repos.map((repo) => (
                   <div key={repo.id} className="item">
-                    {/* {contributors && setRepoContributors(contributors)} */}
+                    {/* {contributors && setRepoContributors(contributors)}
                     {repo && getRepoContributors(repo.contributors_url)}
                     {contributors.map((contr) => (
                       <div key={contr.id} className="item">
                         <h3>{contr.login}</h3>
                       </div>
-                    ))}
-                    <RepoItemPacha repo={repo} />
+                    ))} */}
+                    <RepoItem repo={repo} />
                   </div>
                 ))}
           </div>

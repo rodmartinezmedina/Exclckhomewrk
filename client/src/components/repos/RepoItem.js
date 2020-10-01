@@ -1,28 +1,21 @@
 import React, { useEffect, useContext } from "react";
 import GithubContext from "../../contexts/github/githubContext";
+import Contributors from "react-contributors";
 
 const RepoItem = ({ repo }) => {
   const githubContext = useContext(GithubContext);
-
-  const { getRepoContributors, contributors } = githubContext;
-
+  // const { getRepoContributors, contributors } = githubContext;
   // useEffect(() => {
   //   getRepoContributors(repo.full_name);
   // }, []);
 
   return (
     <div className="card">
-      <h3>
+      <h1>
         <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
           {repo.name}
         </a>
-      </h3>
-      <h4>{repo.collaborators_url}</h4>
-      {/* {contributors.map((contr) => (
-        <div key={contr.id} className="contributor item">
-          <h3>{contr.login}</h3>
-        </div>
-      ))} */}
+      </h1>
 
       {repo.description && (
         <p>
@@ -38,6 +31,20 @@ const RepoItem = ({ repo }) => {
           {repo.language}
         </p>
       )}
+
+      {/* {contributors.map((contr) => (
+        <div key={contr.id} className="contributor item">
+          <h3>{contr.login}</h3>
+        </div>
+      ))} */}
+      <div>
+        <h4>Contributors</h4>
+        <Contributors
+          owner={repo.owner.login}
+          repo={repo.name}
+          className="contributors-container"
+        />
+      </div>
     </div>
   );
 };

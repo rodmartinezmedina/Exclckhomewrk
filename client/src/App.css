@@ -335,6 +335,13 @@ button {
   font: inherit;
 }
 
+.contributors-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
 /*  */
 /* MOBILE STYLES */
 @media (max-width: 700px) {
