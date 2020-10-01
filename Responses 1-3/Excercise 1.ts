@@ -24,3 +24,18 @@ const highestOcurrence: highestOccurrenceType = (arr) => {
 
   return resultArr;
 };
+
+///////////////
+
+// O(n) TIME COMPLEXITY SOLUTION FOUND ALL AROUND THE WEB
+
+// const function1 = (arr) => {
+//   const map = arr.reduce(
+//     (map, key) => map.set(key, (map.get(key) || 0) + 1),
+//     new Map()
+//   );
+
+//   const table = [...map];
+//   const result = Object.fromEntries(table);
+//   return result;
+// };

@@ -1,3 +1,4 @@
+// MY SOLUTION
 type maxSubarraySumType = (input: Array<number>, num: number) => number;
 
 const maxSubArraySum: maxSubarraySumType = (input, num) => {
