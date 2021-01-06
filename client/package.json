@@ -5,7 +5,7 @@
   "dependencies": {
     "@testing-library/user-event": "^7.1.2",
     "@types/react-addons-test-utils": "^0.14.25",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "react": "^16.13.1",
     "react-contributors": "^1.1.2",
     "react-dom": "^16.13.1",
